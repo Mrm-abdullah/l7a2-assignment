@@ -5,6 +5,7 @@ export const pool = new Pool({
   connectionString: config.connection_string,
 });
 
+
 export const initDB = async () => {
   try {
     await pool.query(`
