@@ -18,19 +18,33 @@ const createIssueIntoDB = async (payload: CreateIssueInput, reporter_id: number)
 
 const getAllIssuesFromDB = async () => {
   const result = await pool.query(`
-      SELECT * FROM issues  
-        `);
-  return result;
+    SELECT * FROM issues
+  `);
+
+  return result.rows;
 };
 
 const getSingleIssueFromDB = async (id: string) => {
   const result = await pool.query(
-    `
-      SELECT * FROM Issues WHERE id=$1  
-        `,
-    [id],
+    `SELECT * FROM issues WHERE id=$1`,
+    [id]
   );
-  return result;
+
+  if (result.rows.length === 0) {
+    return null;
+  }
+
+  const issue = result.rows[0];
+  const userResult = await pool.query(
+    `SELECT id, name, role FROM users WHERE id=$1`,
+    [issue.reporter_id]
+  );
+  const user = userResult.rows[0];
+
+   return {
+    ...issue,
+    reporter: user,
+  };
 };
 
 const updateIssueFromDB = async (payload: CreateIssueInput, id: string, reporter_id: number) => {

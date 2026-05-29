@@ -332,3 +332,19 @@ Method -> PUT - Time -> 1780045629770 - URL -> /api/issues/13
 Method -> PUT - Time -> 1780045675714 - URL -> /api/issues/13
 
 Method -> PUT - Time -> 1780045691292 - URL -> /api/issues/9
+
+Method -> GET - Time -> 1780047323682 - URL -> /api/issues/9
+
+Method -> GET - Time -> 1780048576281 - URL -> /api/issues/9
+
+Method -> GET - Time -> 1780048848726 - URL -> /api/issues/9
+
+Method -> GET - Time -> 1780049079853 - URL -> /api/issues/9
+
+Method -> GET - Time -> 1780049147995 - URL -> /api/issues/9
+
+Method -> GET - Time -> 1780049169873 - URL -> /api/issues/9
+
+Method -> GET - Time -> 1780049187598 - URL -> /api/issues/9
+
+Method -> GET - Time -> 1780049203421 - URL -> /api/issues/9

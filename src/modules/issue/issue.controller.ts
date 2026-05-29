@@ -26,22 +26,19 @@ const createIssue = async (req: Request, res: Response) => {
 };
 
 const getAllIssues = async (req: Request, res: Response) => {
-  // console.log("COntroller", req.user.role); 
-  
   try {
-    
-    const result = await issueService.getAllIssuesFromDB();
-    // console.log(result)
-    res.status(200).json({
+    const issues = await issueService.getAllIssuesFromDB();
+
+    return res.status(200).json({
       success: true,
-      message: "Issues retrived successfully",
-      data: result.rows,
+      message: "Issues retrieved successfully",
+      data: issues,
     });
+
   } catch (error: any) {
-    res.status(500).json({
+    return res.status(500).json({
       success: false,
       message: error.message,
-      error: error,
     });
   }
 };
@@ -49,25 +46,24 @@ const getAllIssues = async (req: Request, res: Response) => {
 const getSingleIssue = async (req: Request, res: Response) => {
   const { id } = req.params;
   try {
-    const result = await issueService.getSingleIssueFromDB(id as string);
-    if (result.rows.length === 0) {
-      res.status(404).json({
+    const issue = await issueService.getSingleIssueFromDB(id as string);
+    if (!issue) {
+      return res.status(404).json({
         success: false,
         message: "Issue Not found!",
         data: {},
       });
     }
 
-    res.status(200).json({
+    return res.status(200).json({
       success: true,
-      message: "Issue retrived successfully",
-      data: result.rows[0],
+      message: "Issue retrieved successfully",
+      data: issue,
     });
   } catch (error: any) {
-    res.status(500).json({
+    return res.status(500).json({
       success: false,
       message: error.message,
-      error: error,
     });
   }
 };
