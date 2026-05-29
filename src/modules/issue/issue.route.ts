@@ -10,7 +10,7 @@ router.get(
   issueController.getAllIssues,
 );
 router.get("/:id", issueController.getSingleIssue);
-// router.put("/:id", userController.updateUser);
+router.put("/:id", issueController.updateIssue);
 // router.delete("/:id", userController.deleteUser);
 
 export const issueRoute = router;

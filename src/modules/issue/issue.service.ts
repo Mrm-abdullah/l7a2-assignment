@@ -33,25 +33,25 @@ const getSingleIssueFromDB = async (id: string) => {
   return result;
 };
 
-// const updateIssueFromDB = async (payload: IIssue, id: string) => {
-//   const { name, password, age, is_active } = payload;
+const updateIssueFromDB = async (payload: CreateIssueInput, id: string) => {
+  const { title, description, type, reporter_id } = payload;
 
-//   const result = await pool.query(
-//     `
-//     UPDATE issue 
-//     SET 
-//     name=COALESCE($1,name),
-//     password=COALESCE($2,password),
-//     age=COALESCE($3,age),
-//     is_active=COALESCE($4,is_active) 
+  const result = await pool.query(
+    `
+    UPDATE issues 
+    SET 
+    title=COALESCE($1,title),
+    description=COALESCE($2,description),
+    type=COALESCE($3,type),
+    reporter_id=COALESCE($4,reporter_id) 
 
-//     WHERE id=$5 RETURNING *
-//     `,
-//     [name, password, age, is_active, id],
-//   );
+    WHERE id=$5 RETURNING *
+    `,
+    [title, description, type, reporter_id, id],
+  );
 
-//   return result;
-// };
+  return result;
+};
 
 // const deleteIssueFromDB = async (id: string) => {
 //   const result = await pool.query(
@@ -67,6 +67,6 @@ export const issueService = {
   createIssueIntoDB,
   getAllIssuesFromDB,
   getSingleIssueFromDB,
-  // updateIssueFromDB,
+  updateIssueFromDB,
   // deleteIssueFromDB,
 };
