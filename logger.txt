@@ -134,3 +134,11 @@ Method -> PUT - Time -> 1780015830509 - URL -> /api/issues/2
 Method -> PUT - Time -> 1780015846688 - URL -> /api/issues/2
 
 Method -> PUT - Time -> 1780016127597 - URL -> /api/issues/2
+
+Method -> PUT - Time -> 1780016353437 - URL -> /api/issues/7
+
+Method -> PUT - Time -> 1780016385125 - URL -> /api/issues/5
+
+Method -> DELETE - Time -> 1780016398752 - URL -> /api/issues/5
+
+Method -> DELETE - Time -> 1780016438583 - URL -> /api/issues/5
