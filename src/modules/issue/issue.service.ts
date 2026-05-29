@@ -21,7 +21,29 @@ const getAllIssuesFromDB = async () => {
     SELECT * FROM issues
   `);
 
-  return result.rows;
+  const issues = result.rows;
+
+  if (issues.length === 0) {
+    return [];
+  }
+
+  const formattedIssues = await Promise.all(
+    issues.map(async (issue) => {
+      const userResult = await pool.query(
+        `SELECT id, name, role FROM users WHERE id=$1`,
+        [issue.reporter_id]
+      );
+
+      const user = userResult.rows[0];
+
+      return {
+        ...issue,
+        reporter: user,
+      };
+    })
+  );
+
+  return formattedIssues;
 };
 
 const getSingleIssueFromDB = async (id: string) => {
