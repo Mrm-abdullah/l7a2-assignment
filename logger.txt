@@ -96,3 +96,21 @@ Method -> POST - Time -> 1779982000747 - URL -> /api/auth/login
 Method -> POST - Time -> 1779982362020 - URL -> /api/auth/login
 
 Method -> POST - Time -> 1779982732764 - URL -> /api/auth/login
+
+Method -> POST - Time -> 1779985408425 - URL -> /api/issue
+
+Method -> POST - Time -> 1779985437147 - URL -> /api/issu
+
+Method -> POST - Time -> 1779985466076 - URL -> /api/issues
+
+Method -> POST - Time -> 1779985923315 - URL -> /api/issues
+
+Method -> GET - Time -> 1780013098971 - URL -> /
+
+Method -> GET - Time -> 1780013099102 - URL -> /favicon.ico
+
+Method -> POST - Time -> 1780013269028 - URL -> /api/issues
+
+Method -> POST - Time -> 1780013723316 - URL -> /api/issues
+
+Method -> POST - Time -> 1780013807122 - URL -> /api/issues
