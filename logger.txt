@@ -262,3 +262,19 @@ Method -> POST - Time -> 1780032305679 - URL -> /api/issues
 Method -> POST - Time -> 1780032338048 - URL -> /api/issues
 
 Method -> POST - Time -> 1780032348415 - URL -> /api/issues
+
+Method -> DELETE - Time -> 1780032464258 - URL -> /api/issues/14
+
+Method -> DELETE - Time -> 1780032518657 - URL -> /api/issues/7
+
+Method -> POST - Time -> 1780032681977 - URL -> /api/issues
+
+Method -> DELETE - Time -> 1780032721637 - URL -> /api/issues
+
+Method -> DELETE - Time -> 1780032740188 - URL -> /api/issues/1
+
+Method -> DELETE - Time -> 1780032747267 - URL -> /api/issues/2
+
+Method -> DELETE - Time -> 1780032760082 - URL -> /api/issues/1
+
+Method -> DELETE - Time -> 1780032767934 - URL -> /api/issues/2
