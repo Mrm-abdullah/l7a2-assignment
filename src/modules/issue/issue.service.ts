@@ -2,8 +2,8 @@ import bcrypt from "bcryptjs";
 import { pool } from "../../db";
 import type { CreateIssueInput } from "./issue.interface";
 
-const createIssueIntoDB = async (payload: CreateIssueInput) => {
-  const { title, description, type, reporter_id } = payload;
+const createIssueIntoDB = async (payload: CreateIssueInput, reporter_id: number) => {
+  const { title, description, type, } = payload;
 // console.log(payload)
   const result = await pool.query(
 
@@ -33,8 +33,8 @@ const getSingleIssueFromDB = async (id: string) => {
   return result;
 };
 
-const updateIssueFromDB = async (payload: CreateIssueInput, id: string) => {
-  const { title, description, type, reporter_id } = payload;
+const updateIssueFromDB = async (payload: CreateIssueInput, id: string, reporter_id: number) => {
+  const { title, description, type, } = payload;
 
   const result = await pool.query(
     `

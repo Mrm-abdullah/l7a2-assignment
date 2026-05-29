@@ -6,7 +6,7 @@ import { issueService } from "./issue.service";
 const createIssue = async (req: Request, res: Response) => {
 
   try {
-    const result = await issueService.createIssueIntoDB(req.body);
+    const result = await issueService.createIssueIntoDB(req.body, req.user?.id);
     // console.log(result);
 
     sendResponse(res, {
@@ -26,9 +26,12 @@ const createIssue = async (req: Request, res: Response) => {
 };
 
 const getAllIssues = async (req: Request, res: Response) => {
-  // console.log("COntroller", req);
+  // console.log("COntroller", req.user.role); 
+  
   try {
+    
     const result = await issueService.getAllIssuesFromDB();
+    // console.log(result)
     res.status(200).json({
       success: true,
       message: "Issues retrived successfully",
@@ -71,28 +74,18 @@ const getSingleIssue = async (req: Request, res: Response) => {
 
 const updateIssue = async (req: Request, res: Response) => {
   const { id } = req.params;
-
+  const reporter_id = req.user?.id
   // console.log("Id : ", id);
 
   try {
-    const result = await issueService.updateIssueFromDB(req.body, id as string);
-console.log(result)
+    const result = await issueService.updateIssueFromDB(req.body, id as string, reporter_id);
+// console.log(result)
     if (result.rows.length === 0) {
       res.status(404).json({
         success: false,
         message: "Issue Not found!",
       });
     }
-
-    // contributor can only update own issue
-    // if (user.role === "contributor") {
-    //   if (issue.created_by !== user.id) {
-    //     return res.status(403).json({
-    //       success: false,
-    //       message: "You can only update your own issue",
-    //     });
-    //   }
-    // }
 
     // console.log(result);
     res.status(200).json({
@@ -112,9 +105,16 @@ console.log(result)
 const deleteIssue = async (req: Request, res: Response) => {
   const { id } = req.params;
   try {
+    if (req.user?.role !== "maintainer") {
+      return res.status(403).json({
+        success: false,
+        message: "Only maintainer can delete issues",
+      });
+    }
+    
     const result = await issueService.deleteIssueFromDB(id as string);
 
-    console.log(result);
+    // console.log(result);
     if (result.rowCount === 0) {
       res.status(404).json({
         success: false,
