@@ -76,13 +76,23 @@ const updateIssue = async (req: Request, res: Response) => {
 
   try {
     const result = await issueService.updateIssueFromDB(req.body, id as string);
-
+console.log(result)
     if (result.rows.length === 0) {
       res.status(404).json({
         success: false,
         message: "Issue Not found!",
       });
     }
+
+    // contributor can only update own issue
+    // if (user.role === "contributor") {
+    //   if (issue.created_by !== user.id) {
+    //     return res.status(403).json({
+    //       success: false,
+    //       message: "You can only update your own issue",
+    //     });
+    //   }
+    // }
 
     // console.log(result);
     res.status(200).json({

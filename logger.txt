@@ -142,3 +142,29 @@ Method -> PUT - Time -> 1780016385125 - URL -> /api/issues/5
 Method -> DELETE - Time -> 1780016398752 - URL -> /api/issues/5
 
 Method -> DELETE - Time -> 1780016438583 - URL -> /api/issues/5
+
+Method -> GET - Time -> 1780025873996 - URL -> /api/issues
+
+Method -> GET - Time -> 1780025900078 - URL -> /api/issues
+
+Method -> GET - Time -> 1780025976426 - URL -> /api/issues
+
+Method -> GET - Time -> 1780026028129 - URL -> /api/auth/login
+
+Method -> POST - Time -> 1780026044900 - URL -> /api/auth/login
+
+Method -> GET - Time -> 1780026141229 - URL -> /api/issues
+
+Method -> GET - Time -> 1780026148909 - URL -> /api/issues
+
+Method -> GET - Time -> 1780026151935 - URL -> /api/issues
+
+Method -> GET - Time -> 1780026155874 - URL -> /api/issues
+
+Method -> GET - Time -> 1780026160969 - URL -> /api/issues
+
+Method -> GET - Time -> 1780026757070 - URL -> /api/issues
+
+Method -> GET - Time -> 1780026795829 - URL -> /api/issues
+
+Method -> GET - Time -> 1780026806472 - URL -> /api/issues
