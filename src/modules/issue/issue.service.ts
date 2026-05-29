@@ -23,15 +23,15 @@ const getAllIssuesFromDB = async () => {
   return result;
 };
 
-// const getSingleIssueFromDB = async (id: string) => {
-//   const result = await pool.query(
-//     `
-//       SELECT * FROM Issue WHERE id=$1  
-//         `,
-//     [id],
-//   );
-//   return result;
-// };
+const getSingleIssueFromDB = async (id: string) => {
+  const result = await pool.query(
+    `
+      SELECT * FROM Issues WHERE id=$1  
+        `,
+    [id],
+  );
+  return result;
+};
 
 // const updateIssueFromDB = async (payload: IIssue, id: string) => {
 //   const { name, password, age, is_active } = payload;
@@ -66,7 +66,7 @@ const getAllIssuesFromDB = async () => {
 export const issueService = {
   createIssueIntoDB,
   getAllIssuesFromDB,
-  // getSingleIssueFromDB,
+  getSingleIssueFromDB,
   // updateIssueFromDB,
   // deleteIssueFromDB,
 };

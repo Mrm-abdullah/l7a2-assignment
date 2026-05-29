@@ -31,7 +31,7 @@ const getAllIssues = async (req: Request, res: Response) => {
     const result = await issueService.getAllIssuesFromDB();
     res.status(200).json({
       success: true,
-      message: "Issues retrived successfully!",
+      message: "Issues retrived successfully",
       data: result.rows,
     });
   } catch (error: any) {
@@ -43,31 +43,31 @@ const getAllIssues = async (req: Request, res: Response) => {
   }
 };
 
-// const getSingleIssue = async (req: Request, res: Response) => {
-//   const { id } = req.params;
-//   try {
-//     const result = await issueService.getSingleIssueFromDB(id as string);
-//     if (result.rows.length === 0) {
-//       res.status(404).json({
-//         success: false,
-//         message: "Issue Not found!",
-//         data: {},
-//       });
-//     }
+const getSingleIssue = async (req: Request, res: Response) => {
+  const { id } = req.params;
+  try {
+    const result = await issueService.getSingleIssueFromDB(id as string);
+    if (result.rows.length === 0) {
+      res.status(404).json({
+        success: false,
+        message: "Issue Not found!",
+        data: {},
+      });
+    }
 
-//     res.status(200).json({
-//       success: true,
-//       message: "Issue retrived successfully!",
-//       data: result.rows[0],
-//     });
-//   } catch (error: any) {
-//     res.status(500).json({
-//       success: false,
-//       message: error.message,
-//       error: error,
-//     });
-//   }
-// };
+    res.status(200).json({
+      success: true,
+      message: "Issue retrived successfully",
+      data: result.rows[0],
+    });
+  } catch (error: any) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+      error: error,
+    });
+  }
+};
 
 // const updateIssue = async (req: Request, res: Response) => {
 //   const { id } = req.params;
@@ -130,7 +130,7 @@ const getAllIssues = async (req: Request, res: Response) => {
 export const issueController = {
   createIssue,
   getAllIssues,
-//   getSingleIssue,
+  getSingleIssue,
 //   updateIssue,
 //   deleteIssue,
 };

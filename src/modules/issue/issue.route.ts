@@ -9,7 +9,7 @@ router.get(
 //   auth(USER_ROLE.admin, USER_ROLE.agent, USER_ROLE.user),
   issueController.getAllIssues,
 );
-// router.get("/:id", userController.getSingleUser);
+router.get("/:id", issueController.getSingleIssue);
 // router.put("/:id", userController.updateUser);
 // router.delete("/:id", userController.deleteUser);
 
