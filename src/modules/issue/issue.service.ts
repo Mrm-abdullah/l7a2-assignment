@@ -56,6 +56,10 @@ const updateIssueFromDB = async (payload: CreateIssueInput, id: string, reporter
     throw new Error("FORBIDDEN");
   }
 
+  if (user.role == "contributor" && issue.status !== "open") {
+    throw new Error("FORBIDDEN");
+  }
+
   const result = await pool.query(
     `
     UPDATE issues 
