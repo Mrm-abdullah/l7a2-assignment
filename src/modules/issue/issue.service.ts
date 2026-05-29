@@ -35,6 +35,26 @@ const getSingleIssueFromDB = async (id: string) => {
 
 const updateIssueFromDB = async (payload: CreateIssueInput, id: string, reporter_id: number) => {
   const { title, description, type, } = payload;
+  console.log(reporter_id)
+   const userQuery = await pool.query(
+    `SELECT * FROM users WHERE id=$1`,
+    [reporter_id]
+  );
+  const user = userQuery.rows[0]
+  // console.log("sdsdsds", user)
+
+    const issueQuery = await pool.query(
+    `SELECT * FROM issues WHERE id=$1`,
+    [id]
+  );
+  const issue = issueQuery.rows[0];
+  if (!issue) {
+    throw new Error("NOT_FOUND");
+  }
+
+  if (user.role !== "maintainer" && issue.reporter_id !== user.id) {
+    throw new Error("FORBIDDEN");
+  }
 
   const result = await pool.query(
     `
@@ -42,13 +62,13 @@ const updateIssueFromDB = async (payload: CreateIssueInput, id: string, reporter
     SET 
     title=COALESCE($1,title),
     description=COALESCE($2,description),
-    type=COALESCE($3,type),
-    reporter_id=COALESCE($4,reporter_id) 
+    type=COALESCE($3,type)
 
-    WHERE id=$5 RETURNING *
-    `,
-    [title, description, type, reporter_id, id],
-  );
+     WHERE id = $4
+  RETURNING *
+  `,
+  [title, description, type, id]
+);
 
   return result;
 };
@@ -61,7 +81,7 @@ const deleteIssueFromDB = async (id: string) => {
     [id],
   );
   return result;
-};
+};  
 
 export const issueService = {
   createIssueIntoDB,
