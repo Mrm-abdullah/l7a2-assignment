@@ -16,29 +16,29 @@ const createIssueIntoDB = async (payload: CreateIssueInput) => {
 
 };
 
-// const getAllUsersFromDB = async () => {
-//   const result = await pool.query(`
-//       SELECT * FROM users  
-//         `);
-//   return result;
-// };
+const getAllIssuesFromDB = async () => {
+  const result = await pool.query(`
+      SELECT * FROM issues  
+        `);
+  return result;
+};
 
-// const getSingleUserFromDB = async (id: string) => {
+// const getSingleIssueFromDB = async (id: string) => {
 //   const result = await pool.query(
 //     `
-//       SELECT * FROM users WHERE id=$1  
+//       SELECT * FROM Issue WHERE id=$1  
 //         `,
 //     [id],
 //   );
 //   return result;
 // };
 
-// const updateUserFromDB = async (payload: IUser, id: string) => {
+// const updateIssueFromDB = async (payload: IIssue, id: string) => {
 //   const { name, password, age, is_active } = payload;
 
 //   const result = await pool.query(
 //     `
-//     UPDATE users 
+//     UPDATE issue 
 //     SET 
 //     name=COALESCE($1,name),
 //     password=COALESCE($2,password),
@@ -53,10 +53,10 @@ const createIssueIntoDB = async (payload: CreateIssueInput) => {
 //   return result;
 // };
 
-// const deleteUserFromDB = async (id: string) => {
+// const deleteIssueFromDB = async (id: string) => {
 //   const result = await pool.query(
 //     `
-//     DELETE FROM users WHERE id=$1  
+//     DELETE FROM issue WHERE id=$1  
 //       `,
 //     [id],
 //   );
@@ -65,8 +65,8 @@ const createIssueIntoDB = async (payload: CreateIssueInput) => {
 
 export const issueService = {
   createIssueIntoDB,
-  // getAllUsersFromDB,
-  // getSingleUserFromDB,
-  // updateUserFromDB,
-  // deleteUserFromDB,
+  getAllIssuesFromDB,
+  // getSingleIssueFromDB,
+  // updateIssueFromDB,
+  // deleteIssueFromDB,
 };
