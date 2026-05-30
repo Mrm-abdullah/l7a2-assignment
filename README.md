@@ -1,7 +1,7 @@
 # B7A2
 
 # 🚼 DevPulse
-## Live URL: https://issue-tracker-api.onrender.com
+## Live URL: https://b7-a2-tan.vercel.app
 
 
 > Internal Tech Issue & Feature Tracker
@@ -37,30 +37,29 @@
 
 ## 🗄️ Database Schema Design
 
-### Table 1: `users`
+### users
 
-| Field | Requirement (Plain Text) |
-| --- | --- |
-| `id` | Auto-incrementing unique identifier for each account |
-| `name` | Full display name of the team member, must be provided |
-| `email` | Valid login address, must be unique across all accounts, must be provided |
-| `password` | Encrypted string stored securely, must be provided during registration, never returned in responses |
-| `role` | Determines system access level, defaults to `contributor`, must be `contributor` or `maintainer` |
-| `created_at` | Timestamp marking when the account was created, automatically generated on insert |
-| `updated_at` | Timestamp marking when the account was last updated, automatically refreshed on update |
+| Field      | Type         |
+|------------|--------------|
+| id         | SERIAL       |
+| name       | VARCHAR(100) |
+| email      | VARCHAR(100) |
+| password   | TEXT         |
+| role       | VARCHAR(20)  |
+| created_at | TIMESTAMP    |
 
-### Table 2: `issues`
+### issues
 
-| Field | Requirement (Plain Text) |
-| --- | --- |
-| `id` | Auto-incrementing unique identifier for each reported item |
-| `title` | Short descriptive headline, must be provided, maximum 150 characters |
-| `description` | Detailed explanation of the problem or suggestion, must be provided, minimum 20 characters |
-| `type` | Categorizes the entry, must be either `bug` or `feature_request` |
-| `status` | Current workflow state, defaults to `open`. Status must be one of: `open`, `in_progress`, `resolved` |
-| `reporter_id` | References the user who submitted the issue (no foreign key constraint required; validate in application logic) |
-| `created_at` | Timestamp marking when the issue was created, automatically generated on insert |
-| `updated_at` | Timestamp marking when the issue was last updated, automatically refreshed on update |
+| Field        | Type         |
+|--------------|--------------|
+| id           | SERIAL       |
+| title        | VARCHAR(255) |
+| description  | TEXT         |
+| type         | VARCHAR(50)  |
+| status       | VARCHAR(50)  |
+| reporter_id  | INTEGER      |
+| assignee_id  | INTEGER      |
+| created_at   | TIMESTAMP    |
 
 ---
 
@@ -162,59 +161,3 @@ JWT_REFRESH_SECRET=your_JWT_REFRESH_SECRET
 4. Start development server
 
 npm run dev
-
-
-
-do it
-## 🎤 Technical Interview Video (Answer Any 2)
-
-**Questions:**
-
-1. How does the Node.js event loop execute asynchronous tasks without blocking the single main thread?
-2. What is the purpose of `next()` in Express middleware, and what happens if it is omitted in a route handler?
-3. How do you create a centralized error-handling middleware in Express to safely catch both sync and async errors?
-4. What are the main differences between SQL (PostgreSQL) and NoSQL (MongoDB) regarding schema design and scaling?
-5. What is database connection pooling in PostgreSQL, and why is it preferred over opening a new client connection for every request?
-
-**🎤 Recording Instructions:**
-
-- Use your smartphone selfie camera or laptop webcam in **landscape (horizontal) mode**.
-- Record in a **well-lit, quiet room** with your **face fully visible** throughout the video.
-- Select and answer **any 2 questions** from the list above, spoken in **English**.
-- Keep each answer between **3–5 minutes**. Speak naturally from your understanding — avoid reading verbatim from notes or scripts.
-- Upload your video to **Google Drive**, **YouTube (Unlisted)**, or any cloud platform, and share a **publicly accessible link**.
-
----
-
-### 2️⃣ Deployment Requirements
-
-- Deploy backend to **Vercel**, **Render**, or **Railway**
-- Use **NeonDB**, **Supabase**, or **ElephantSQL** for PostgreSQL
-- Ensure CORS and environment variables are properly configured
-
-[**README.md](http://readme.md/) must include:**
-
-- Project name, live URL, features, tech stack
-- Setup steps, API endpoint list, database schema summary
-- Keep it clear and professional
-
----
-
----
-
-### 3️⃣ Final Submission Checklist
-
-Submit the following in your assignment form:
-
-```
-✅ GitHub Repo (Public):      <https://github.com/yourusername/devpulse>
-✅ Live Deployment (Public):  <https://devpulse-api.vercel.app>
-✅ Interview Video (Public):  <https://drive.google.com/>... or <https://youtu.be/>...
-```
-
-> 💡 **Pro Tips:**
-> 
-> - Ensure your GitHub repo has **at least 10 meaningful commits** showing progressive development
-> - Avoid single-commit submissions
-> - Double-check all links are publicly accessible before submitting
-
