@@ -123,6 +123,7 @@ const deleteIssueFromDB = async (id: string) => {
   return result;
 };  
 
+
 export const issueService = {
   createIssueIntoDB,
   getAllIssuesFromDB,

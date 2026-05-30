@@ -27,7 +27,6 @@ const signupUser = async (req: Request, res: Response) => {
   }
 };
 
-
 const loginUser = async (req: Request, res: Response) => {
   try {
     const result = await authService.loginUserIntoDB(req.body);
@@ -42,7 +41,7 @@ const loginUser = async (req: Request, res: Response) => {
 
     res.status(200).json({
       success: true,
-      message: "User login successfully!",
+      message: "Login successful",
       data: result,
     });
   } catch (error: any) {

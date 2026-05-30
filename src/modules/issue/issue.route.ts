@@ -13,4 +13,3 @@ router.delete("/:id", auth(USER_ROLE.maintainer,),issueController.deleteIssue);
 
 export const issueRoute = router;
 
-//   auth(USER_ROLE.maintainer, USER_ROLE.contributor,),

@@ -29,16 +29,19 @@ const getAllIssues = async (req: Request, res: Response) => {
   try {
     const issues = await issueService.getAllIssuesFromDB();
 
-    return res.status(200).json({
+    sendResponse(res, {
+      statusCode: 200,
       success: true,
-      message: "Issues retrieved successfully",
+      message: "Issues retrieved successful",
       data: issues,
     });
 
   } catch (error: any) {
-    return res.status(500).json({
+    sendResponse(res, {
+      statusCode: 500,
       success: false,
       message: error.message,
+      error: error,
     });
   }
 };
@@ -48,22 +51,24 @@ const getSingleIssue = async (req: Request, res: Response) => {
   try {
     const issue = await issueService.getSingleIssueFromDB(id as string);
     if (!issue) {
-      return res.status(404).json({
+      sendResponse(res, {
+        statusCode: 404,
         success: false,
         message: "Issue Not found!",
-        data: {},
       });
     }
-
-    return res.status(200).json({
+    sendResponse(res, {
+      statusCode: 200,
       success: true,
       message: "Issue retrieved successfully",
       data: issue,
     });
   } catch (error: any) {
-    return res.status(500).json({
+    sendResponse(res, {
+      statusCode: 500,
       success: false,
       message: error.message,
+      error: error,
     });
   }
 };
@@ -77,24 +82,28 @@ const updateIssue = async (req: Request, res: Response) => {
     const result = await issueService.updateIssueFromDB(req.body, id as string, reporter_id);
 // console.log(result)
     if (result.rows.length === 0) {
-      res.status(404).json({
+      sendResponse(res, {
+        statusCode: 404,
         success: false,
         message: "Issue Not found!",
       });
     }
 
     // console.log(result);
-    res.status(200).json({
+    sendResponse(res, {
+      statusCode: 200,
       success: true,
       message: "Issue updated successfully!",
       data: result.rows[0],
     });
   } catch (error: any) {
-    res.status(500).json({
+    sendResponse(res, {
+      statusCode: 500,
       success: false,
       message: error.message,
       error: error,
     });
+    
   }
 };
 
@@ -102,29 +111,30 @@ const deleteIssue = async (req: Request, res: Response) => {
   const { id } = req.params;
   try {
     if (req.user?.role !== "maintainer") {
-      return res.status(403).json({
+      sendResponse(res, {
+        statusCode: 403,
         success: false,
         message: "Only maintainer can delete issues",
       });
     }
-    
     const result = await issueService.deleteIssueFromDB(id as string);
 
     // console.log(result);
     if (result.rowCount === 0) {
-      res.status(404).json({
+      sendResponse(res, {
+        statusCode: 404,
         success: false,
-        message: "Issue Not found!",
+        message: "Issues retrieved successful",
       });
     }
-
-    res.status(200).json({
+    sendResponse(res, {
+      statusCode: 200,
       success: true,
       message: "Issue deleted successfully",
-      data: {},
     });
   } catch (error: any) {
-    res.status(500).json({
+    sendResponse(res, {
+      statusCode: 500,
       success: false,
       message: error.message,
       error: error,
