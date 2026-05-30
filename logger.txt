@@ -406,3 +406,35 @@ Method -> PUT - Time -> 1780057387119 - URL -> /api/issues/11/status
 Method -> PUT - Time -> 1780057414181 - URL -> /api/issues/12/status
 
 Method -> PUT - Time -> 1780058157565 - URL -> /api/issues/12/status
+
+Method -> GET - Time -> 1780115495171 - URL -> /
+
+Method -> GET - Time -> 1780115495215 - URL -> /favicon.ico
+
+Method -> GET - Time -> 1780115529766 - URL -> /
+
+Method -> GET - Time -> 1780118666066 - URL -> /
+
+Method -> GET - Time -> 1780118666798 - URL -> /
+
+Method -> GET - Time -> 1780118667294 - URL -> /
+
+Method -> GET - Time -> 1780118676529 - URL -> /
+
+Method -> GET - Time -> 1780118700787 - URL -> /issues
+
+Method -> GET - Time -> 1780118711063 - URL -> /api/issues
+
+Method -> GET - Time -> 1780118717478 - URL -> /api/issues
+
+Method -> GET - Time -> 1780118728108 - URL -> /api/issues
+
+Method -> GET - Time -> 1780118866536 - URL -> /api/issues
+
+Method -> GET - Time -> 1780118899829 - URL -> /api/issues/12
+
+Method -> GET - Time -> 1780119004328 - URL -> /api/issues/12
+
+Method -> GET - Time -> 1780119107006 - URL -> /api/issues
+
+Method -> GET - Time -> 1780119306074 - URL -> /api/issues
