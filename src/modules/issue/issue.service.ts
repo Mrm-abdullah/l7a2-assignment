@@ -87,13 +87,12 @@ const updateIssueFromDB = async (payload: CreateIssueInput, id: string, reporter
   if (!issue) {
     throw new Error("NOT_FOUND");
   }
-
-  if (user.role !== "maintainer" && issue.reporter_id !== user.id) {
-    throw new Error("FORBIDDEN");
-  }
+if (user.role !== "maintainer" && issue.reporter_id !== user.id) {
+  throw new Error("Forbidden: You can only edit your own issues.");
+}
 
   if (user.role == "contributor" && issue.status !== "open") {
-    throw new Error("FORBIDDEN");
+    throw new Error("Forbidden: You can only edit your own issues if status 'open'.");
   }
 
   const result = await pool.query(

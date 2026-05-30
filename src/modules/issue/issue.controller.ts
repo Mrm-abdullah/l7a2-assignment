@@ -10,7 +10,7 @@ const createIssue = async (req: Request, res: Response) => {
     // console.log(result);
 
     sendResponse(res, {
-      statusCode: 201,
+      statusCode: 200,
       success: true,
       message: "Issue created successfully",
       data: result.rows[0],
@@ -51,7 +51,7 @@ const getSingleIssue = async (req: Request, res: Response) => {
       return res.status(404).json({
         success: false,
         message: "Issue Not found!",
-        data: {},
+        
       });
     }
 
